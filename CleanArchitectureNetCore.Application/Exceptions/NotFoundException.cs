@@ -1,4 +1,4 @@
-﻿namespace CleanArchitectureNetCore.Application.Exception
+﻿namespace CleanArchitectureNetCore.Application.Exceptions
 {
   public class NotFoundException : ApplicationException
   {

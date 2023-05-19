@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CleanArchitectureNetCore.Application.Contracts.Infrastucture;
 using CleanArchitectureNetCore.Application.Contracts.Persistence;
-using CleanArchitectureNetCore.Application.Exception;
+using CleanArchitectureNetCore.Application.Exceptions;
 using CleanArchitectureNetCore.Application.Models;
 using CleanArchitectureNetCore.Domain.Entities;
 using MediatR;

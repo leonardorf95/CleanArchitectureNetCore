@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CleanArchitectureNetCore.Application.Contracts.Persistence;
-using CleanArchitectureNetCore.Application.Exception;
+using CleanArchitectureNetCore.Application.Exceptions;
 using CleanArchitectureNetCore.Domain.Entities;
 using MediatR;
 using Microsoft.Extensions.Logging;

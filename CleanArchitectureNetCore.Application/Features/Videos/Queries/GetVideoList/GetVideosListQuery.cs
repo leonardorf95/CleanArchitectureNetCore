@@ -1,4 +1,4 @@
-﻿using CleanArchitectureNetCore.Domain.Dtos.Videos;
+﻿using CleanArchitectureNetCore.Application.Dtos.Videos;
 using MediatR;
 
 namespace CleanArchitectureNetCore.Application.Features.Videos.Queries.GetVideoList

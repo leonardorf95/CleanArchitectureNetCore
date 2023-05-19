@@ -1,4 +1,4 @@
-﻿namespace CleanArchitectureNetCore.Domain.Dtos.Videos
+﻿namespace CleanArchitectureNetCore.Application.Dtos.Videos
 {
   public class VideosDto
   {
