@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitectureNetCore.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitectureNetCore.Application", "CleanArchitectureNetCore.Application\CleanArchitectureNetCore.Application.csproj", "{5DC4616C-2CF7-4769-A6C1-957F6A73D1ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitectureNetCore.Identity", "CleanArchitectureNetCore.Identity\CleanArchitectureNetCore.Identity.csproj", "{36374199-AF2B-47FB-9214-9392809097EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{5DC4616C-2CF7-4769-A6C1-957F6A73D1ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DC4616C-2CF7-4769-A6C1-957F6A73D1ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DC4616C-2CF7-4769-A6C1-957F6A73D1ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36374199-AF2B-47FB-9214-9392809097EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36374199-AF2B-47FB-9214-9392809097EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36374199-AF2B-47FB-9214-9392809097EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36374199-AF2B-47FB-9214-9392809097EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{D2F7D689-BEE3-4D96-8868-7956F1BB7883} = {4A0CDFE2-D66F-45C4-A4FB-254617709B61}
 		{BC22A05C-8106-406C-B9C8-13D738A4DFFB} = {DCB99688-25E2-4C0B-83E1-9D03C872D0F3}
 		{5DC4616C-2CF7-4769-A6C1-957F6A73D1ED} = {804A4862-7FBF-4871-928F-A89DA12A98F6}
+		{36374199-AF2B-47FB-9214-9392809097EC} = {D2F7D689-BEE3-4D96-8868-7956F1BB7883}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BEF1D4D8-88E1-402F-B354-53C7EE5A24B5}

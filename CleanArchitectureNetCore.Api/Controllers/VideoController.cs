@@ -1,7 +1,9 @@
 ﻿using CleanArchitectureNetCore.Application.Dtos.Videos;
 using CleanArchitectureNetCore.Application.Features.Videos.Queries.GetVideoList;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using System.Net;
 
 namespace CleanArchitectureNetCore.Api.Controllers
@@ -18,6 +20,7 @@ namespace CleanArchitectureNetCore.Api.Controllers
     }
 
     [HttpGet("{username}", Name = "get-video")]
+    [Authorize(Roles = "regular")]
     [ProducesResponseType(typeof(IEnumerable<VideosDto>), (int)HttpStatusCode.OK)]
     public async Task<ActionResult<IEnumerable<VideosDto>>> GetVideosByUsername(string username)
     {

@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CleanArchitectureNetCore.Application\CleanArchitectureNetCore.Application.csproj" />
     <ProjectReference Include="..\CleanArchitectureNetCore.Data\CleanArchitectureNetCore.Infrastruture.csproj" />
+    <ProjectReference Include="..\CleanArchitectureNetCore.Identity\CleanArchitectureNetCore.Identity.csproj" />
   </ItemGroup>
 
 </Project>
