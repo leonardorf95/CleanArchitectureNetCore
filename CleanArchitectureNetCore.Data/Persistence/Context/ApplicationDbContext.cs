@@ -9,7 +9,6 @@ namespace CleanArchitectureNetCore.Infrastruture.Persistence.Context
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
     //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     //{
-    //  var connectionString = "Server=DESKTOP-2FTLAUM\\SQLEXPRESS;Database=test-architecture;User ID=sa;Password=Admin$01;TrustServerCertificate=True;";
     //  optionsBuilder.UseSqlServer(connectionString);
     //}
 
