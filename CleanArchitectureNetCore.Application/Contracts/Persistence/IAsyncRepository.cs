@@ -19,6 +19,6 @@ namespace CleanArchitectureNetCore.Application.Contracts.Persistence
 
     Task<T> UpdateAsync(T entity);
 
-    Task<T> DeleteAsync(T entity);
+    Task DeleteAsync(T entity);
   }
 }
