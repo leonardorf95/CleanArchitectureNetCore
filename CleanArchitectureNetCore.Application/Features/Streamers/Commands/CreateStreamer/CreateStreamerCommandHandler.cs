@@ -11,14 +11,16 @@ namespace CleanArchitectureNetCore.Application.Features.Streamers.Commands.Creat
 {
   public class CreateStreamerCommandHandler : IRequestHandler<CreateStreamerCommand, int>
   {
-    private readonly IStreamerRepository _streamerRepository;
+
+    //private readonly IStreamerRepository _streamerRepository;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly IEmailService _emailService;
     private readonly ILogger<CreateStreamerCommandHandler> _logger;
 
-    public CreateStreamerCommandHandler(IStreamerRepository streamerRepository, IMapper mapper, IEmailService emailService, ILogger<CreateStreamerCommandHandler> logger)
+    public CreateStreamerCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, IEmailService emailService, ILogger<CreateStreamerCommandHandler> logger)
     {
-      _streamerRepository = streamerRepository;
+      _unitOfWork = unitOfWork;
       _mapper = mapper;
       _emailService = emailService;
       _logger = logger;
@@ -28,13 +30,20 @@ namespace CleanArchitectureNetCore.Application.Features.Streamers.Commands.Creat
     {
       var streamerEntity = _mapper.Map<Streamer>(request);
 
-      var newStreamer = await _streamerRepository.AddAsync(streamerEntity);
+      //var newStreamer = await _streamerRepository.AddAsync(streamerEntity);
+      _unitOfWork.StreamerRepository.AddEntity(streamerEntity);
+      var newStreamer = await _unitOfWork.Complete();
 
-      string message = $"Se ha añadido un nuevo streamer ${newStreamer.Id}";
+      if(newStreamer<= 0)
+      {
+        throw new Exception("Error al insertar stremaer");
+      }
+
+      string message = $"Se ha añadido un nuevo streamer ${streamerEntity.Id}";
       _logger.LogInformation(message);
 
-      await SendEmail(newStreamer, "luisfonseca9521@gmail.com");
-      return newStreamer.Id;
+      await SendEmail(streamerEntity, "luisfonseca9521@gmail.com");
+      return streamerEntity.Id;
     }
 
     private async Task SendEmail(Streamer streamer, string emails)
