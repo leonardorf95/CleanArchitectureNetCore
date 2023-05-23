@@ -10,30 +10,33 @@ namespace CleanArchitectureNetCore.Application.Features.Streamers.Commands.Updat
   public class UpdateStreamerCommandHandler : IRequestHandler<UpdateStreamerCommand>
   {
     private readonly IStreamerRepository _streamerRepository;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly ILogger<UpdateStreamerCommandHandler> _logger;
 
-    public UpdateStreamerCommandHandler(IStreamerRepository streamerRepository, IMapper mapper, ILogger<UpdateStreamerCommandHandler> logger)
+    public UpdateStreamerCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, ILogger<UpdateStreamerCommandHandler> logger)
     {
-      _streamerRepository = streamerRepository;
+      _unitOfWork = unitOfWork;
       _mapper = mapper;
       _logger = logger;
     }
 
     public async Task<Unit> Handle(UpdateStreamerCommand request, CancellationToken cancellationToken)
     {
-      var findStreamer = await _streamerRepository.GetByIdAsync(request.Id);
+      //var findStreamer = await _streamerRepository.GetByIdAsync(request.Id);
+      var streamerToUpdate = await _unitOfWork.StreamerRepository.GetByIdAsync(request.Id);
 
-      if (findStreamer == null)
+      if (streamerToUpdate == null)
       {
         _logger.LogError($"No se encontro el streamer id {request.Id}");
         throw new NotFoundException(nameof(Streamer), request.Id);
       }
 
-      findStreamer.Url = request.Url;
-      findStreamer.Name = request.Name;
+      _mapper.Map(request, streamerToUpdate, typeof(UpdateStreamerCommand), typeof(Streamer));
 
-     var result =  await _streamerRepository.UpdateAsync(findStreamer);
+      _unitOfWork.StreamerRepository.UpdateEntity(streamerToUpdate);
+
+      var result = await _unitOfWork.Complete();
 
       _logger.LogInformation($"La operación fue exitosa actualizando el streamer ${request.Id}");
 
