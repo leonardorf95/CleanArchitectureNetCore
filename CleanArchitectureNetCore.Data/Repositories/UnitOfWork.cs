@@ -7,8 +7,24 @@ namespace CleanArchitectureNetCore.Infrastruture.Repositories
 {
   public class UnitOfWork : IUnitOfWork
   {
+    /// <summary>
+    /// Creat una tabla temporal con la instancia de la entidad generada
+    /// </summary>
     private Hashtable _repositories;
+
+    /// <summary>
+    /// DbContext de la conexion de la base de datos
+    /// </summary>
     private readonly ApplicationDbContext _context;
+
+    private IVideoRepository _videoRepository;
+    private IStreamerRepository _streamerRepository;
+
+    /// <summary>
+    /// Implementación de unit of work para repositorios personalizados
+    /// </summary>
+    public IVideoRepository VideoRepository => _videoRepository ??= new VideoRepository(_context);
+    public IStreamerRepository StreamerRepository => _streamerRepository ??= new StreamerRepository(_context);
 
     public UnitOfWork(ApplicationDbContext context)
     {
